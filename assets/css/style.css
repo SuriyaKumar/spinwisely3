@@ -47,6 +47,10 @@ h4,
     padding: 0 2rem;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* Navbar */
 #navbar {
     position: fixed;
@@ -393,6 +397,46 @@ h4,
 .w-100 {
     width: 100%;
     cursor: pointer;
+}
+
+.form-feedback {
+    text-align: center;
+    color: var(--white);
+    padding: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-feedback.hidden {
+    display: none;
+}
+
+.form-feedback i {
+    width: 60px;
+    height: 60px;
+    color: #4BB543;
+    margin-bottom: 1.5rem;
+}
+
+.form-feedback h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.form-feedback p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer */

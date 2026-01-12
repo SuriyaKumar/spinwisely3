@@ -48,12 +48,33 @@ mobileToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Form Submission handling (Simulated)
+// Form Submission handling (Hidden Iframe Method)
 const contactForm = document.getElementById('contact-form');
+const successMessage = document.getElementById('form-success');
+
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for connecting! We will get back to you soon.');
-        contactForm.reset();
+    contactForm.addEventListener('submit', () => {
+        // Allow the form to submit naturally to the hidden iframe
+        // Just update the UI to show success
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Sending...";
+
+        // Simulate a brief delay for UX, then show success message
+        setTimeout(() => {
+            contactForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            if (window.lucide) window.lucide.createIcons();
+
+            // Reset form for next time
+            contactForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Send Message";
+        }, 800);
     });
+}
+
+function resetForm() {
+    contactForm.classList.remove('hidden');
+    successMessage.classList.add('hidden');
 }
